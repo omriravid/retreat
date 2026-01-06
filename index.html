@@ -49,7 +49,6 @@
             color: var(--white);
             background: var(--brown-dark);
             direction: rtl;
-            padding-bottom: 80px;
         }
 
         /* STICKY CTA */
@@ -666,7 +665,7 @@
 
         .facilitator-image img.tamar-image {
             object-position: center 15%;
-            transform: scale(1.2);
+            transform: scale(1.35);
         }
 
         .facilitator-image img.mor-image {
@@ -979,11 +978,6 @@
     </style>
 </head>
 <body>
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-        <button class="sticky-btn register-btn">אני רוצה להירשם</button>
-    </div>
-
     <!-- HERO -->
     <section class="hero">
         <h1 class="hero-title">ריטריט תנועה במדבר</h1>
@@ -1017,14 +1011,14 @@
     <section class="content-section content-section-brown">
         <div class="content-wrapper">
             <h3 class="handwriting-title">תנועה שמרפאה</h3>
-            <p>נתרגל יחד באולם תרגולים עגול וקסום, עם חלונות פנורמיים למדבר מכל עבר. נלמד להכיר לעומק את גוף האשה, נתרגל פילאטיס אבל לא רק, ניתן דגש מיוחד לרצפת האגן, ננוע בגוף וברגש, ונצא למסע של שחרור בגוף וברגש באקסטטיק דאנס.</p>
+            <p>נתרגל יחד באולם תרגולים עגול וקסום, עם חלונות פנורמיים למדבר מכל עבר. נלמד להכיר לעומק את גוף האשה, נתרגל פילאטיס אבל לא רק, ניתן דגש מיוחד לרצפת האגן, ננוע בגוף וברגש, נצא למסע של שחרור באקסטטיק דאנס.</p>
         </div>
     </section>
 
     <section class="content-section content-section-image" style="background-image: url('Images/background_3.jpg');">
         <div class="content-wrapper">
             <h3>אוכל מזין ובריא</h3>
-            <p>נאכל יחד ארוחות בוקר וערב, טעימות ממש, מתוצרת מקומית, ארוחות טריות, מזינות ובריאות.</p>
+            <p>נאכל יחד ארוחות בוקר וערב צמחוניות, טעימות ממש, מתוצרת מקומית, ארוחות טריות, מזינות ובריאות.</p>
             <p>נקבל ביחד את השבת בארוחת ערב חגיגית.</p>
         </div>
     </section>
@@ -1151,7 +1145,7 @@
                     </div>
                     <div class="schedule-item">
                         <span class="schedule-time">21:00</span>
-                        <span class="schedule-activity">מסע של גוף ורגש - אקסטטיק דאנס</span>
+                        <span class="schedule-activity">נפתח את הלב עם טקס קקאו ונמשיך למסע של גוף ורגש- אקסטטיק דאנס.</span>
                     </div>
                 </div>
             </div>
@@ -1246,7 +1240,7 @@
 
     <!-- CONSULTATION SECTION -->
     <section class="lead-section">
-        <h2>מוזמנת להתייעץ איתנו</h2>
+        <h2>רוצה לשמוע עוד?</h2>
         <div class="consultation-contacts">
             <div class="consultation-person">
                 <span class="person-name">תמר 052-8613826</span>
@@ -1278,52 +1272,5 @@
         <p>© 2026 ריטריט תנועה במדבר</p>
     </footer>
 
-    <!-- MODAL -->
-    <div id="payment-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <h3>הרשמה ותשלום</h3>
-            <div class="payment-iframe-container">
-                <iframe id="payment-iframe" src=""></iframe>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const registerBtns = document.querySelectorAll('.register-btn');
-        const paymentModal = document.getElementById('payment-modal');
-        const paymentIframe = document.getElementById('payment-iframe');
-        const modalClose = document.getElementById('modal-close');
-
-        registerBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                paymentIframe.src = 'https://pay.tranzila.com/fxpmpilates';
-                paymentModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        modalClose.addEventListener('click', () => {
-            paymentModal.classList.remove('active');
-            document.body.style.overflow = '';
-            paymentIframe.src = '';
-        });
-
-        paymentModal.addEventListener('click', (e) => {
-            if (e.target === paymentModal) {
-                paymentModal.classList.remove('active');
-                document.body.style.overflow = '';
-                paymentIframe.src = '';
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && paymentModal.classList.contains('active')) {
-                paymentModal.classList.remove('active');
-                document.body.style.overflow = '';
-                paymentIframe.src = '';
-            }
-        });
-    </script>
 </body>
 </html>
