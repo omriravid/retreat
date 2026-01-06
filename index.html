@@ -3,221 +3,1327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>בחירת עיצוב - ריטריט תנועה במדבר</title>
+    <title>ריטריט תנועה במדבר - Women in Motion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Amatic+SC:wght@400;700&family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom Hebrew Handwriting Font */
+        @font-face {
+            font-family: 'DanaYad';
+            src: url('fonts/DanaYadAlefAlefAlef-Normal.woff') format('woff'),
+                 url('fonts/DanaYadAlefAlefAlef-Normal.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
         }
+
+        /* VERSION 2: Warm Brown/Earthy with White Text */
+        :root {
+            --brown-darkest: #2C1810;
+            --brown-dark: #3D2317;
+            --brown: #5C3D2E;
+            --brown-medium: #8B5A42;
+            --brown-light: #A67B5B;
+            --cream: #F5E6D3;
+            --cream-light: #FDF8F3;
+            --white: #FFFFFF;
+            --gold: #D4A574;
+            --gold-light: #E8C9A0;
+            --highlight: #FFF3CD;
+        }
+
+        .highlight {
+            background: var(--highlight);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Heebo', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--white);
+            background: var(--brown-dark);
             direction: rtl;
+            padding-bottom: 80px;
         }
 
-        .container {
-            max-width: 1200px;
+        /* STICKY CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, var(--brown-darkest), var(--brown-darkest));
+            padding: 16px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-top: 1px solid var(--brown-medium);
+        }
+
+        .sticky-cta .urgency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+        }
+
+        .sticky-cta .urgency .dot {
+            width: 8px;
+            height: 8px;
+            background: #EF5350;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .sticky-btn {
+            background: var(--gold);
+            color: var(--brown-darkest);
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sticky-btn:hover {
+            background: var(--gold-light);
+            transform: scale(1.02);
+        }
+
+        /* HERO - Full screen with overlay */
+        .hero {
+            min-height: 100vh;
+            background-image: url('Images/background_2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(44, 24, 16, 0.7) 0%,
+                rgba(44, 24, 16, 0.6) 50%,
+                rgba(44, 24, 16, 0.8) 100%
+            );
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-family: 'Heebo', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: var(--gold-light);
+            margin-bottom: 24px;
+            letter-spacing: 0.15em;
+        }
+
+        .hero-location {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .hero-date {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--brown-darkest);
+            padding: 18px 48px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--white);
+            padding: 14px 32px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        .hero-trust {
+            margin-top: 32px;
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.7;
+        }
+
+        /* SOCIAL PROOF STRIP */
+        .proof-strip {
+            background: var(--brown-darkest);
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid var(--brown);
+        }
+
+        .proof-strip p {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: var(--brown-dark);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .intro-content {
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        h1 {
-            text-align: center;
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 12px;
+        .intro-content p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--cream);
+            margin-bottom: 20px;
         }
 
-        .subtitle {
+        .intro-content strong {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* ALTERNATING CONTENT SECTIONS */
+        .content-section {
+            padding: 80px 24px;
             text-align: center;
-            color: #C4956C;
+        }
+
+        .content-section-image {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-section-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(44, 24, 16, 0.65);
+        }
+
+        .content-section-image .content-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            padding: 40px 24px;
+        }
+
+        .content-section-brown {
+            background: var(--brown);
+        }
+
+        .content-section .content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-section h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .content-section h3.handwriting-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+        }
+
+        .content-section p {
             font-size: 1.1rem;
-            margin-bottom: 50px;
+            line-height: 2;
+            color: var(--cream);
+            margin-bottom: 16px;
         }
 
-        .versions-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+        .content-section strong {
+            color: var(--gold);
+            font-weight: 500;
         }
 
-        @media (max-width: 900px) {
-            .versions-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+        .content-section-image h3 {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 600px) {
+            .content-section {
+                padding: 60px 20px;
+            }
+
+            .content-section-image {
+                min-height: 350px;
             }
         }
 
-        .version-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+        /* FEATURES */
+        .features-section {
+            background: var(--brown);
+            padding: 80px 24px;
         }
 
-        .version-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .version-preview {
-            height: 300px;
+        .feature-item {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+        }
+
+        .feature-item h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        .section-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        /* PRICING */
+        .pricing-section {
+            background: linear-gradient(135deg, var(--brown-darkest), var(--brown-dark));
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .pricing-section .section-title {
+            margin-bottom: 48px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .pricing-card {
+            flex: 1;
+            padding: 20px 16px;
+            background: var(--brown);
+            border-radius: 10px;
+            border: 1px solid var(--brown-medium);
+            transition: all 0.3s ease;
+            max-width: 200px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .pricing-card .price {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .per {
+            font-size: 0.75rem;
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        .pricing-villa {
+            font-size: 1rem;
+            color: var(--cream);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .pricing-policy {
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background-image: url('Images/background_4.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 24px;
+            text-align: center;
             position: relative;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(44, 24, 16, 0.75);
+        }
+
+        .cta-banner > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            color: var(--cream);
+            margin-bottom: 32px;
+        }
+
+        /* SCHEDULE */
+        .schedule-section {
+            background: var(--brown-dark);
+            padding: 80px 24px;
+        }
+
+        .schedule-section .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .schedule-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .day-block {
+            margin-bottom: 40px;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .day-number {
+            min-width: 55px;
+            height: 55px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gold);
+            color: var(--brown-darkest);
+            border-radius: 30px;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .day-title {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .schedule-items {
+            padding-right: 25px;
+            border-right: 2px solid var(--brown-medium);
+            margin-right: 25px;
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 20px;
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            right: -31px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            background: var(--brown-dark);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+        }
+
+        .schedule-time {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            min-width: 50px;
+            direction: ltr;
+            text-align: center;
+        }
+
+        .schedule-activity {
+            font-size: 1.05rem;
+            color: var(--cream);
+            line-height: 1.5;
+        }
+
+        .schedule-disclaimer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.7;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* FACILITATORS */
+        .facilitators-section {
+            background: var(--brown);
+            padding: 80px 24px;
+        }
+
+        .facilitators-section .section-title {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .facilitators-subtitle {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 48px;
+        }
+
+        .facilitators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .facilitator-card {
+            background: var(--brown-dark);
+            border-radius: 20px;
             overflow: hidden;
         }
 
-        .version-preview img {
+        .facilitator-image {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .facilitator-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: top;
         }
 
-        .version-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .facilitator-image img.tamar-image {
+            object-position: center 15%;
+            transform: scale(1.2);
         }
 
-        .version-info {
-            padding: 24px;
+        .facilitator-image img.mor-image {
+            object-position: center 20%;
+            transform: scale(1.15);
         }
 
-        .version-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
+        .facilitator-content {
+            padding: 28px;
         }
 
-        .version-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .facilitator-name {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: var(--gold);
             margin-bottom: 16px;
         }
 
-        .version-tags {
+        .facilitator-bio {
+            font-size: 0.9rem;
+            color: var(--cream);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .facilitator-contact {
             display: flex;
-            gap: 8px;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--brown-medium);
+        }
+
+        @media (min-width: 600px) {
+            .facilitator-contact {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--white);
+            transition: opacity 0.3s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        .contact-link.whatsapp svg {
+            color: #25D366;
+        }
+
+        .contact-link.instagram svg {
+            color: #E4405F;
+        }
+
+        .contact-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* CONSULTATION SECTION */
+        .lead-section {
+            background: var(--brown-darkest);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .lead-section h2 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 32px;
+        }
+
+        .consultation-contacts {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .tag {
-            background: #f5f5f5;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #666;
+        .consultation-person {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-        .cta-button {
-            display: block;
-            text-align: center;
-            background: #C4956C;
-            color: #fff;
-            padding: 14px;
+        .person-name {
+            color: var(--white);
             font-size: 1rem;
-            font-weight: 500;
-            transition: background 0.3s ease;
         }
 
-        .version-card:hover .cta-button {
-            background: #A67B5B;
+        .person-icons {
+            display: flex;
+            gap: 12px;
         }
 
-        .footer-note {
+        .icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--brown-medium);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .icon-link:hover {
+            border-color: var(--gold);
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        .icon-link svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .icon-link.whatsapp svg {
+            color: #25D366;
+        }
+
+        .icon-link.phone svg {
+            color: var(--gold);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--brown-darkest);
+            padding: 32px 24px;
             text-align: center;
-            color: #888;
-            margin-top: 50px;
-            font-size: 0.9rem;
+            border-top: 1px solid var(--brown);
         }
 
-        /* Style indicators */
-        .v1-accent { border-top: 4px solid #1a1a1a; }
-        .v2-accent { border-top: 4px solid #8B6B4D; }
-        .v3-accent { border-top: 4px solid #C4956C; }
+        .footer p {
+            font-size: 0.8rem;
+            color: var(--cream);
+            opacity: 0.5;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 24, 16, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--brown-dark);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            border: 1px solid var(--brown-medium);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--cream);
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .payment-iframe-container {
+            min-height: 400px;
+            background: var(--brown);
+            border-radius: 12px;
+        }
+
+        .payment-iframe-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+
+            .feature-item {
+                padding: 16px 8px;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 12px;
+            }
+
+            .feature-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .feature-item p {
+                font-size: 0.8rem;
+            }
+
+            .pricing-cards {
+                gap: 12px;
+            }
+
+            .pricing-card {
+                padding: 16px 12px;
+                max-width: 160px;
+            }
+
+            .pricing-card h3 {
+                font-size: 0.8rem;
+            }
+
+            .pricing-card .price {
+                font-size: 1.3rem;
+            }
+
+            .pricing-card .per {
+                font-size: 0.7rem;
+            }
+
+            .facilitators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-cta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .sticky-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+
+            .feature-item {
+                padding: 12px 4px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 8px;
+            }
+
+            .feature-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .feature-item h3 {
+                font-size: 0.85rem;
+            }
+
+            .feature-item p {
+                display: none;
+            }
+
+            .lead-form {
+                flex-direction: column;
+            }
+
+            .lead-form input {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ריטריט תנועה במדבר</h1>
-        <p class="subtitle">בחרי את העיצוב המועדף עלייך</p>
-
-        <div class="versions-grid">
-            <!-- Version 1 -->
-            <a href="index-v1.html" class="version-card v1-accent">
-                <div class="version-preview">
-                    <img src="Images/background_2.jpg" alt="Version 1 Preview">
-                    <span class="version-badge">גרסה 1</span>
-                </div>
-                <div class="version-info">
-                    <h2 class="version-title">מינימליסטי לבן</h2>
-                    <p class="version-description">עיצוב נקי ומודרני עם רקע לבן, טקסט שחור ודגשים בצבע חום-זהב. מראה מקצועי ואלגנטי.</p>
-                    <div class="version-tags">
-                        <span class="tag">רקע לבן</span>
-                        <span class="tag">נקי</span>
-                        <span class="tag">מודרני</span>
-                    </div>
-                </div>
-                <div class="cta-button">צפי בעיצוב</div>
-            </a>
-
-            <!-- Version 2 -->
-            <a href="index-v2.html" class="version-card v2-accent">
-                <div class="version-preview">
-                    <img src="Images/background_1.jpg" alt="Version 2 Preview">
-                    <span class="version-badge">גרסה 2</span>
-                </div>
-                <div class="version-info">
-                    <h2 class="version-title">חום אדמתי</h2>
-                    <p class="version-description">עיצוב חמים עם גווני חום ואדמה, טקסט לבן וזהב. אווירה מדברית ומזמינה.</p>
-                    <div class="version-tags">
-                        <span class="tag">רקע חום</span>
-                        <span class="tag">חמים</span>
-                        <span class="tag">מדברי</span>
-                    </div>
-                </div>
-                <div class="cta-button">צפי בעיצוב</div>
-            </a>
-
-            <!-- Version 3 -->
-            <a href="index-v3.html" class="version-card v3-accent">
-                <div class="version-preview">
-                    <img src="Images/background_3.jpg" alt="Version 3 Preview">
-                    <span class="version-badge">גרסה 3</span>
-                </div>
-                <div class="version-info">
-                    <h2 class="version-title">סיפורי ואימרסיבי</h2>
-                    <p class="version-description">עיצוב עם תמונות גדולות, כפתור צף קבוע ומבנה סיפורי שמוביל את המבקרת בחוויה.</p>
-                    <div class="version-tags">
-                        <span class="tag">תמונות גדולות</span>
-                        <span class="tag">כפתור צף</span>
-                        <span class="tag">סיפורי</span>
-                    </div>
-                </div>
-                <div class="cta-button">צפי בעיצוב</div>
-            </a>
-        </div>
-
-        <p class="footer-note">לחצי על כל גרסה כדי לצפות בה במלואה</p>
+    <!-- STICKY CTA -->
+    <div class="sticky-cta">
+        <button class="sticky-btn register-btn">אני רוצה להירשם</button>
     </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1 class="hero-title">ריטריט תנועה במדבר</h1>
+        <p class="hero-subtitle">Women in Motion</p>
+        <p class="hero-location">נוף צוקים</p>
+        <p class="hero-date">5-7.3.2026</p>
+        <span class="hero-badge">בליווי פיזיותרפיסטית</span>
+        <p class="hero-trust">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            תשלום מאובטח · אפשרות לביטול בעלות סמלית עד חודש לפני
+        </p>
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="intro-section">
+        <div class="intro-content">
+            <p>עם תחילת האביב, כשמזג האויר מושלם, ניפגש לסוף שבוע מדברי שמלא בפילאטיס, בתנועה, ברגש, בחיבור לעצמנו ולנשים נוספות. נאכל אוכל מזין וטעים, נתרגש, נתחמם בלילה מול המדורה עם כוס יין.</p>
+            <p><strong>מזמינות אותך לקחת את הזמן לעצמך, את חשובה.</strong> להתחבר לנשים נוספות, ולהרגיש כמה תנועה מרפאה.</p>
+        </div>
+    </section>
+
+    <!-- ALTERNATING CONTENT SECTIONS -->
+    <section class="content-section content-section-image" style="background-image: url('Images/background_1.jpg');">
+        <div class="content-wrapper">
+            <h3>נוף צוקים</h3>
+            <p>נישן בבקתות המדבריות, המפנקות, עם נוף מדברי מרהיב. בכל בקתה מרפסת עם ערסל, פינת מדורה, וג'קוזי חוץ מחמם.</p>
+        </div>
+    </section>
+
+    <section class="content-section content-section-brown">
+        <div class="content-wrapper">
+            <h3 class="handwriting-title">תנועה שמרפאה</h3>
+            <p>נתרגל יחד באולם תרגולים עגול וקסום, עם חלונות פנורמיים למדבר מכל עבר. נלמד להכיר לעומק את גוף האשה, נתרגל פילאטיס אבל לא רק, ניתן דגש מיוחד לרצפת האגן, ננוע בגוף וברגש, ונצא למסע של שחרור בגוף וברגש באקסטטיק דאנס.</p>
+        </div>
+    </section>
+
+    <section class="content-section content-section-image" style="background-image: url('Images/background_3.jpg');">
+        <div class="content-wrapper">
+            <h3>אוכל מזין ובריא</h3>
+            <p>נאכל יחד ארוחות בוקר וערב, טעימות ממש, מתוצרת מקומית, ארוחות טריות, מזינות ובריאות.</p>
+            <p>נקבל ביחד את השבת בארוחת ערב חגיגית.</p>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                </div>
+                <h3>פילאטיס ותנועה</h3>
+                <p>שיעורים מול נוף מדברי</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <h3>בקתות פרטיות</h3>
+                <p>ג'קוזי ומרפסת עם נוף</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                </div>
+                <h3>אוכל מזין</h3>
+                <p>תוצרת חקלאית מקומית</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h3>חיבור נשי</h3>
+                <p>קהילה מעצימה</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing-section">
+        <h2 class="section-title">ההשקעה שלך</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>בקתה ל-3 משתתפות</h3>
+                <div class="price">₪3,150</div>
+                <span class="per">מחיר למשתתפת</span>
+            </div>
+            <div class="pricing-card">
+                <h3>בקתה ל-2 משתתפות</h3>
+                <div class="price">₪3,550</div>
+                <span class="per">מחיר למשתתפת</span>
+            </div>
+        </div>
+        <p class="pricing-villa">באות כמה חברות יחד? יש אופציה לוילה מרהיבה עם בריכה פרטית</p>
+        <p class="pricing-policy">*ניתן להזמין חדר ביחד או להשתבץ בחדר לפי הזמינות<br>*מדיניות ביטולים: חודש לפני 300 ₪, 14 יום 30%, שבוע 50%, מעבר לזה תשלום מלא</p>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="schedule-section">
+        <h2 class="section-title">הצצה למסע שלנו יחד</h2>
+        <div class="schedule-timeline">
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-number">5.3</div>
+                    <h3 class="day-title">יום חמישי</h3>
+                </div>
+                <div class="schedule-items">
+                    <div class="schedule-item">
+                        <span class="schedule-time">15:00</span>
+                        <span class="schedule-activity">הגעה והתארגנות בחדרים</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">16:00</span>
+                        <span class="schedule-activity">מתחילות, מתרגשות, מכירות</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">17:30</span>
+                        <span class="schedule-activity">שיעור ראשון מול הנוף - פילאטיס מזרן קלאסי</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">18:30</span>
+                        <span class="schedule-activity">ארוחת ערב מזינה וטעימה</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">20:30</span>
+                        <span class="schedule-activity">מדורה, יין, היכרות, מרשמלו ותה</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-number">6.3</div>
+                    <h3 class="day-title">יום שישי</h3>
+                </div>
+                <div class="schedule-items">
+                    <div class="schedule-item">
+                        <span class="schedule-time">08:00</span>
+                        <span class="schedule-activity">קפה ומשהו קטן ליד</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">08:30</span>
+                        <span class="schedule-activity">אימון בוקר מעורר לחיזוק והתארכות</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">10:00</span>
+                        <span class="schedule-activity">ארוחת בוקר שתזין אותנו לכל היום</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">11:30</span>
+                        <span class="schedule-activity">סדנת עומק: גוף האישה כעוגן. נצלול לחיבור שבין מדע לרגש, נדבר על רצפת האגן, הנשימה ומה שביניהם</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:00</span>
+                        <span class="schedule-activity">שישי חופשי - ג'קוזי, ספר, כפר אומנים</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">16:00</span>
+                        <span class="schedule-activity">תנועה לפני שקיעה</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">18:00</span>
+                        <span class="schedule-activity">נגיע במיטבנו לקבלת שבת חגיגית</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">21:00</span>
+                        <span class="schedule-activity">מסע של גוף ורגש - אקסטטיק דאנס</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-number">7.3</div>
+                    <h3 class="day-title">יום שבת</h3>
+                </div>
+                <div class="schedule-items">
+                    <div class="schedule-item">
+                        <span class="schedule-time">07:30</span>
+                        <span class="schedule-activity">הליכת בוקר מבוססת מיינדפולנס</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">08:30</span>
+                        <span class="schedule-activity">רצף קלאסי מלא ומאתגר</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">10:00</span>
+                        <span class="schedule-activity">ארוחת בוקר שתזין אותנו לכל היום</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">11:30</span>
+                        <span class="schedule-activity">פינוי חדרים</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">12:00</span>
+                        <span class="schedule-activity">מתיחות והרפיה</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:15</span>
+                        <span class="schedule-activity">מפגש סיום, קפה וגוד-ביי</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="schedule-disclaimer">* אנחנו עדין עובדות על התוכן המדויק והטוב ביותר שיכולות להציע, יתכנו שינויים בלו"ז</p>
+    </section>
+
+    <!-- FACILITATORS -->
+    <section class="facilitators-section">
+        <h2 class="section-title">מי אנחנו</h2>
+        <p class="facilitators-subtitle">נעים להכיר</p>
+        <div class="facilitators-grid">
+            <div class="facilitator-card">
+                <div class="facilitator-image">
+                    <img src="Images/Nice2Meet_Tamar_2.jpg" alt="תמר צור מנור" class="tamar-image">
+                </div>
+                <div class="facilitator-content">
+                    <h3 class="facilitator-name">תמר צור מנור</h3>
+                    <p class="facilitator-bio">החיבור שלי בין גוף, תנועה וחיים התחיל לפני יותר מ־20 שנה, מתוך הבנה עמוקה שתנועה אינה רק כלי לאימון אלא מרכיב מהותי בשיקום, בבריאות ובאיכות החיים.</p>
+                    <p class="facilitator-bio">כפיזיותרפיסטית מוסמכת עם התמחות ברצפת אגן, בעלת קליניקה וסטודיו לפילאטיס, אני מלווה נשים לאורך מעגל החיים, משיקום לאחר לידה, דרך שינויים הורמונליים, עומסים, ועד תקופות של שינוי, כאב או חיפוש מחודש אחר חיבור לגוף.</p>
+                    <p class="facilitator-bio">הניסיון בעבודה עם נשים לימד אותי ששיקום מוצלח אינו מסתכם בטיפול נקודתי, אלא נבנה דרך תנועה מותאמת, מודעת ונכונה, תנועה שמאפשרת לגוף לחזור לתפקוד, לחיוניות ולתחושת ביטחון.</p>
+                    <p class="facilitator-bio">הגישה שלי משלבת דיוק מקצועי עם הקשבה עמוקה, ומבקשת לחבר בין הידע הטיפולי לבין חוויית הגוף בתנועה לא רק כדי "לתקן", אלא כדי לאפשר לנשים לנוע, לחיות ולהרגיש נוכחות מלאה בגופן.</p>
+                    <div class="facilitator-contact">
+                        <a href="https://wa.me/9720528613826" class="contact-link whatsapp" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            052-8613826
+                        </a>
+                        <a href="https://www.instagram.com/tamarzurmanor/?igsh=MWZlZDVxcWlxeHY1cQ%3D%3D#" class="contact-link instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @tamarzurmanor
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="facilitator-card">
+                <div class="facilitator-image">
+                    <img src="Images/Nice2Meet_Mor.jpg" alt="מור רביד" class="mor-image">
+                </div>
+                <div class="facilitator-content">
+                    <h3 class="facilitator-name">מור רביד</h3>
+                    <p class="facilitator-bio">נעים להכיר, מור רביד. אישה, אמא לשלושה, מורה לפילאטיס. אחרי שני תארים וקריירה של שני עשורים בתחום השיווק, התאהבתי. מאוהבת בתנועה, על כל סוגיה.</p>
+                    <p class="facilitator-bio">הפילאטיס הוא הבית שלי. חיה את השיטה שהומצאה על ידי ג׳וזף פילאטיס ונקראת בשמה המקורי קונטרולוג׳י.</p>
+                    <p class="facilitator-bio">מאמינה שתנועה מרפאה, מכל הבחינות ומאמינה עוד יותר בכוח הנשי וביכולת שלנו להיות אחת בשביל השנייה.</p>
+                    <div class="facilitator-contact">
+                        <a href="https://wa.me/9720506623828" class="contact-link whatsapp" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            050-6623828
+                        </a>
+                        <a href="https://www.instagram.com/morish25?igsh=MWk1MmF1eTBtYXVsZQ==" class="contact-link instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @morish25
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSULTATION SECTION -->
+    <section class="lead-section">
+        <h2>מוזמנת להתייעץ איתנו</h2>
+        <div class="consultation-contacts">
+            <div class="consultation-person">
+                <span class="person-name">תמר 052-8613826</span>
+                <div class="person-icons">
+                    <a href="https://wa.me/9720528613826" class="icon-link whatsapp" target="_blank" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="tel:+972528613826" class="icon-link phone" title="התקשרי">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="consultation-person">
+                <span class="person-name">מור 050-6623828</span>
+                <div class="person-icons">
+                    <a href="https://wa.me/9720506623828" class="icon-link whatsapp" target="_blank" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="tel:+972506623828" class="icon-link phone" title="התקשרי">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 ריטריט תנועה במדבר</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h3>הרשמה ותשלום</h3>
+            <div class="payment-iframe-container">
+                <iframe id="payment-iframe" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const registerBtns = document.querySelectorAll('.register-btn');
+        const paymentModal = document.getElementById('payment-modal');
+        const paymentIframe = document.getElementById('payment-iframe');
+        const modalClose = document.getElementById('modal-close');
+
+        registerBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                paymentIframe.src = 'https://pay.tranzila.com/fxpmpilates';
+                paymentModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            paymentModal.classList.remove('active');
+            document.body.style.overflow = '';
+            paymentIframe.src = '';
+        });
+
+        paymentModal.addEventListener('click', (e) => {
+            if (e.target === paymentModal) {
+                paymentModal.classList.remove('active');
+                document.body.style.overflow = '';
+                paymentIframe.src = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && paymentModal.classList.contains('active')) {
+                paymentModal.classList.remove('active');
+                document.body.style.overflow = '';
+                paymentIframe.src = '';
+            }
+        });
+    </script>
 </body>
 </html>
