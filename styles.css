@@ -1,0 +1,881 @@
+/* ריטריט תנועה במדבר - Women in Motion */
+
+:root {
+    --cream: #FDF6ED;
+    --cream-light: #FFFBF5;
+    --sand-light: #F5E6D3;
+    --sand: #E8D4BC;
+    --sand-dark: #C4A77D;
+    --terracotta: #B8704B;
+    --terracotta-light: #D4956E;
+    --brown: #8B6B4D;
+    --brown-dark: #5C4A35;
+    --text: #4A3728;
+    --text-light: #7A6555;
+    --white: #FFFFFF;
+    --shadow: rgba(90, 60, 40, 0.15);
+    --shadow-dark: rgba(90, 60, 40, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text);
+    background-color: var(--cream);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+/* Yellow highlight for placeholder text */
+.placeholder-highlight {
+    background-color: #FFEB3B !important;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #333 !important;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* ===== HERO SECTION ===== */
+.header {
+    min-height: 100vh;
+    background-image: url('Images/background_2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+}
+
+.header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.header-intro {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.title {
+    font-family: 'Amatic SC', cursive;
+    font-size: clamp(3rem, 12vw, 6rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.1;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.title-english {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--white);
+    margin-bottom: 24px;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.subtitle {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 300;
+    opacity: 0.85;
+}
+
+/* ===== CONTENT SECTIONS ===== */
+.content-section {
+    padding: 60px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Intro Section */
+.intro-section {
+    text-align: center;
+    padding: 60px 24px;
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--cream);
+}
+
+.intro-section p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 2;
+}
+
+.intro-section strong {
+    color: var(--terracotta);
+    font-weight: 500;
+}
+
+/* Info Cards */
+.info-section {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 24px;
+    background: var(--cream);
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background: var(--white);
+    padding: 32px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px var(--shadow);
+    min-width: 200px;
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.info-card h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+}
+
+.info-main {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    margin-bottom: 4px;
+}
+
+.info-sub {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Location Section with Background Image */
+.location-section {
+    background-image: url('Images/background_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 80px 24px;
+    position: relative;
+    text-align: center;
+}
+
+.location-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.location-section p {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 2;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--brown-dark);
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 16px auto 0;
+    border-radius: 2px;
+}
+
+/* White title variant for dark backgrounds */
+.section-title-white {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section-title-white::after {
+    background: var(--white);
+}
+
+/* Pricing Section */
+.pricing-section {
+    background: var(--cream);
+    padding: 60px 24px;
+}
+
+.pricing-section .section-title {
+    margin-bottom: 40px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+.pricing-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px var(--shadow-dark);
+}
+
+.pricing-card.featured {
+    border-color: var(--terracotta);
+    background: linear-gradient(135deg, var(--white), var(--sand-light));
+}
+
+.pricing-card h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.pricing-card .price {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+}
+
+.pricing-card > p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.villa-note {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.room-details {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 16px;
+}
+
+.room-details p {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.small-note {
+    font-size: 0.85rem !important;
+    color: var(--text-light) !important;
+}
+
+.cancellation-policy {
+    text-align: center;
+    padding: 16px 24px;
+    background: var(--sand-light);
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cancellation-policy p {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+/* CTA Section */
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 24px;
+    background: var(--cream);
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 48px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 280px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--terracotta), var(--brown));
+    color: var(--white);
+    box-shadow: 0 8px 28px rgba(184, 112, 75, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(184, 112, 75, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.payment-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 0.7rem;
+    opacity: 0.85;
+}
+
+.payment-icon {
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Schedule Section */
+.schedule-section {
+    background-image: url('Images/background_3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 60px 24px;
+    position: relative;
+}
+
+.schedule-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(253, 246, 237, 0.92);
+    z-index: 1;
+}
+
+.schedule-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.schedule-section .section-title {
+    color: var(--brown-dark);
+}
+
+.day-schedule {
+    max-width: 700px;
+    margin: 0 auto 32px;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.day-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--sand-light);
+}
+
+.schedule-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--cream-light);
+    transition: background 0.2s ease;
+}
+
+.schedule-item:hover {
+    background: var(--sand-light);
+}
+
+.time {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--terracotta);
+    min-width: 55px;
+    direction: ltr;
+    text-align: center;
+}
+
+.activity {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.schedule-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* About Section */
+.about-section {
+    background: var(--cream);
+    padding: 60px 24px;
+}
+
+.about-subtitle {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--terracotta);
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+.facilitators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.facilitator-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.facilitator-card:hover {
+    transform: translateY(-4px);
+}
+
+.facilitator-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: var(--sand-light);
+}
+
+.facilitator-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.facilitator-name {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    text-align: center;
+    padding: 24px 24px 12px;
+}
+
+.facilitator-bio {
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 0 24px;
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+.facilitator-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px 28px;
+    flex-wrap: wrap;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sand-light);
+    color: var(--terracotta);
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+    background: var(--terracotta);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.contact-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.phone-number {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1rem;
+    color: var(--text);
+    direction: ltr;
+}
+
+/* Final CTA */
+.final-cta {
+    background-image: url('Images/background_4.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 80px 24px;
+}
+
+.final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.final-cta .btn {
+    position: relative;
+    z-index: 2;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 55, 40, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 48px;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 24px 64px var(--shadow-dark);
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--sand-dark);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--terracotta);
+}
+
+.modal-content h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    color: var(--brown-dark);
+    margin-bottom: 12px;
+}
+
+.modal-content p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: #25D366;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    direction: ltr;
+}
+
+.whatsapp-link:hover {
+    background: #128C7E;
+    transform: scale(1.02);
+}
+
+.modal-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+/* Payment Modal */
+.payment-modal-content {
+    max-width: 500px;
+    padding: 32px;
+}
+
+.payment-secure {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.payment-secure::before {
+    content: '🔒 ';
+}
+
+.payment-iframe-container {
+    width: 100%;
+    min-height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--cream-light);
+}
+
+.payment-iframe-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 24px;
+    background: var(--brown-dark);
+    color: var(--white);
+}
+
+.footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    opacity: 0.9;
+}
+
+.footer-contact span {
+    color: var(--white);
+}
+
+.footer p {
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header {
+        min-height: 90vh;
+        background-attachment: scroll;
+    }
+
+    .title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .info-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .location-section,
+    .schedule-section,
+    .final-cta {
+        background-attachment: scroll;
+    }
+
+    .pricing-grid {
+        gap: 16px;
+    }
+
+    .pricing-card {
+        padding: 24px 20px;
+    }
+
+    .day-schedule {
+        padding: 20px 16px;
+    }
+
+    .schedule-item {
+        padding: 10px 12px;
+    }
+
+    .facilitators-grid {
+        gap: 24px;
+    }
+
+    .facilitator-image {
+        height: 250px;
+    }
+
+    .btn {
+        min-width: 100%;
+        padding: 16px 32px;
+    }
+
+    .modal-content {
+        padding: 32px 24px;
+    }
+
+    .footer-contact {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-section,
+.info-section,
+.location-section,
+.pricing-section,
+.schedule-section,
+.about-section {
+    animation: fadeInUp 0.8s ease both;
+}

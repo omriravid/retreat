@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בחירת עיצוב - ריטריט תנועה במדבר</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #C4956C;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .versions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .versions-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .version-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .version-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .version-preview {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .version-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .version-info {
+            padding: 24px;
+        }
+
+        .version-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .version-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .version-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            background: #C4956C;
+            color: #fff;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .version-card:hover .cta-button {
+            background: #A67B5B;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #888;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Style indicators */
+        .v1-accent { border-top: 4px solid #1a1a1a; }
+        .v2-accent { border-top: 4px solid #8B6B4D; }
+        .v3-accent { border-top: 4px solid #C4956C; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ריטריט תנועה במדבר</h1>
+        <p class="subtitle">בחרי את העיצוב המועדף עלייך</p>
+
+        <div class="versions-grid">
+            <!-- Version 1 -->
+            <a href="index-v1.html" class="version-card v1-accent">
+                <div class="version-preview">
+                    <img src="Images/background_2.jpg" alt="Version 1 Preview">
+                    <span class="version-badge">גרסה 1</span>
+                </div>
+                <div class="version-info">
+                    <h2 class="version-title">מינימליסטי לבן</h2>
+                    <p class="version-description">עיצוב נקי ומודרני עם רקע לבן, טקסט שחור ודגשים בצבע חום-זהב. מראה מקצועי ואלגנטי.</p>
+                    <div class="version-tags">
+                        <span class="tag">רקע לבן</span>
+                        <span class="tag">נקי</span>
+                        <span class="tag">מודרני</span>
+                    </div>
+                </div>
+                <div class="cta-button">צפי בעיצוב</div>
+            </a>
+
+            <!-- Version 2 -->
+            <a href="index-v2.html" class="version-card v2-accent">
+                <div class="version-preview">
+                    <img src="Images/background_1.jpg" alt="Version 2 Preview">
+                    <span class="version-badge">גרסה 2</span>
+                </div>
+                <div class="version-info">
+                    <h2 class="version-title">חום אדמתי</h2>
+                    <p class="version-description">עיצוב חמים עם גווני חום ואדמה, טקסט לבן וזהב. אווירה מדברית ומזמינה.</p>
+                    <div class="version-tags">
+                        <span class="tag">רקע חום</span>
+                        <span class="tag">חמים</span>
+                        <span class="tag">מדברי</span>
+                    </div>
+                </div>
+                <div class="cta-button">צפי בעיצוב</div>
+            </a>
+
+            <!-- Version 3 -->
+            <a href="index-v3.html" class="version-card v3-accent">
+                <div class="version-preview">
+                    <img src="Images/background_3.jpg" alt="Version 3 Preview">
+                    <span class="version-badge">גרסה 3</span>
+                </div>
+                <div class="version-info">
+                    <h2 class="version-title">סיפורי ואימרסיבי</h2>
+                    <p class="version-description">עיצוב עם תמונות גדולות, כפתור צף קבוע ומבנה סיפורי שמוביל את המבקרת בחוויה.</p>
+                    <div class="version-tags">
+                        <span class="tag">תמונות גדולות</span>
+                        <span class="tag">כפתור צף</span>
+                        <span class="tag">סיפורי</span>
+                    </div>
+                </div>
+                <div class="cta-button">צפי בעיצוב</div>
+            </a>
+        </div>
+
+        <p class="footer-note">לחצי על כל גרסה כדי לצפות בה במלואה</p>
+    </div>
+</body>
+</html>
